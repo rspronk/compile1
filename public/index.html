@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Online processor</title> 
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" id="language-row">
+            <select class="form-control" id="language">
+                <option>Choose a language to begin</option>
+                <optgroup label="To CSS">
+                    <option value="less">LESS</option>
+                    <option value="scss">SCSS</option>
+                    <option value="sass">SASS</option>
+                    <option value="stylus">Stylus</option>
+                </optgroup>
+                <optgroup label="To HTML">
+                    <option value="jade">Jade</option>
+                    <option value="haml">HAML</option>
+                <option value="markdown">Markdown</option>
+                </optgroup>
+                <optgroup label="To Javascript">
+                    <option value="coffeescript">CoffeeScript</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+    <div class="row" id="texts-row">
+        <div class="col-sm-12 col-md-6">
+            <textarea id="input" class="form-control" rows="20"></textarea>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <textarea id="output" class="form-control" rows="20"></textarea>
+			<!--<pre id="output"></pre>-->
+        </div>
+    </div>
+    <div class="row" id="submit-row">
+        <button id="submit-button" class="btn btn-info center-block">
+            Process
+        </button>
+    </div>
+</div>
+<script type="text/javascript" src="/assets/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/js/main.js"></script>
+<script type="text/jade" id="jade-example">doctype html
+html(lang="en")
+  head
+    title= pageTitle
+    script(type='text/javascript').
+      if (foo) {
+         bar(1 + 5)
+      }
+  body
+    h1 Jade - node template engine
+    #container.col
+      if youAreUsingJade
+        p You are amazing
+      else
+        p Get on it!
+      p.
+        Jade is a terse and simple
+        templating language with a
+        strong focus on performance
+        and powerful features.
+</script>
+<script type="text/haml" id="haml-example">%section.container
+%h1= "Hello World"
+.content
+    = "This is HAML"
+</script>
+<script type="text/markdown" id="markdown-example">An h1 header
+============
+
+Paragraphs are separated by a blank line.
+
+2nd paragraph. *Italic*, **bold**, and `monospace`. Itemized lists
+look like:
+
+  * this one
+  * that one
+  * the other one
+
+Note that --- not considering the asterisk --- the actual text
+content starts at 4-columns in.
+
+> Block quotes are
+> written like so.
+>
+> They can span multiple paragraphs,
+> if you like.
+
+Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all
+in chapters 12--14"). Three dots ... will be converted to an ellipsis.
+Unicode is supported. ☺
+
+An h2 header
+------------
+
+Here's a numbered list:
+
+ 1. first item
+ 2. second item
+ 3. third item
+
+Note again how the actual text starts at 4 columns in (4 characters
+from the left side). Here's a code sample:
+
+    # Let me re-iterate ...
+    for i in 1 .. 10 { do-something(i) }</script>
+<script type="text/less" id="less-example">@base: #f938ab;
+
+.box-shadow(@style, @c) when (iscolor(@c)) {
+  -webkit-box-shadow: @style @c;
+  box-shadow:         @style @c;
+}
+.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
+  .box-shadow(@style, rgba(0, 0, 0, @alpha));
+}
+.box {
+  color: saturate(@base, 5%);
+  border-color: lighten(@base, 30%);
+  div { .box-shadow(0 0 5px, 30%) }
+}
+</script>
+<script type="text/scss" id="scss-example">$colorRed: red;
+#header {
+    margin: 0;
+    border: 1px solid $colorRed;
+    p {
+        color: $colorRed;
+        font: {
+            size: 12px;
+            weight: bold;
+        }
+    }
+    
+    a {
+        text-decoration: none;
+    }
+}</script>
+<script type="text/sass" id="sass-example">$blue: #3bbfce
+$margin: 16px
+
+.content-navigation
+  border-color: $blue
+  color: darken($blue, 9%)
+
+.border
+  padding: $margin / 2
+  margin: $margin / 2
+  border-color: $blue</script>
+<script type="text/stylus" id="stylus-example">border-radius()
+  -webkit-border-radius arguments
+  -moz-border-radius arguments
+  border-radius arguments
+
+body
+  font 12px Helvetica, Arial, sans-serif
+
+a.button
+  border-radius 5px</script>
+<script type="text/coffeescript" id="coffeescript-example">class Tardis extends TimeMachine
+  go: ->
+    super "vorp vorp"
+    
+class DeLorean extends TimeMachine
+  go: ->
+    super "One point twenty-one gigawatts!"
+    
+doctors_wife = new Tardis "The Doctor"
+doc_browns_wheels = new DeLorean "Marty"
+
+doctors_wife.go()
+doc_browns_wheels.go()</script>
+</body>
+</html>
